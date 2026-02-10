@@ -62,7 +62,7 @@ const Chat = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-800">
       {/* Hero Section */}
-      <section className="relative text-white py-24 px-6 text-center overflow-hidden min-h-[70vh] flex items-center justify-center">
+      <section className="relative text-white py-24 px-6 text-center overflow-hidden min-h-[95vh] flex items-center justify-center">
         {/* Background GIF with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
@@ -153,7 +153,7 @@ const Chat = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl font-bold text-[#1F2943] mb-12">
+              <h2 className="text-3xl font-bold text-[#1F2943] mb-12 w-96">
                 Smart, Organized Communication Made Easy
               </h2>
               <div className="space-y-10">

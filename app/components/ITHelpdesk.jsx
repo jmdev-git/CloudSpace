@@ -21,7 +21,7 @@ const ITHelpdesk = () => {
   return (
     <div className="min-h-screen bg-gray-50 font-sans text-slate-800">
       {/* Hero Section */}
-      <section className="bg-[#1F2943] text-white py-24 px-6 text-center relative overflow-hidden">
+      <section className="relative text-white py-32 px-6 text-center overflow-hidden min-h-[95vh]">
         <div className="absolute inset-0 z-0">
           <img
             src="/ITBanner.gif"
