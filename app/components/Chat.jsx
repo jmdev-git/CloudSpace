@@ -152,24 +152,122 @@ const Chat = () => {
       </section>
 
       {/* What is CloudSpace Chat? */}
-      <section className="py-24 px-6 max-w-5xl mx-auto text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-8 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
-            What is CloudSpace Chat?
-          </h2>
-          <p className="text-slate-300 leading-relaxed text-lg max-w-4xl mx-auto">
-            CNT CloudSpace Chat is a secure enterprise messaging platform
-            designed to streamline internal communication. Built for performance
-            and flexibility, it offers seamless real-time messaging accessible
-            directly via your browser or through our dedicated desktop
-            application.
-          </p>
-        </motion.div>
+      <section className="relative py-32 px-6 overflow-hidden bg-[#1F2943]">
+        {/* Background Elements */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.03]"></div>
+
+        <div className="max-w-6xl mx-auto relative z-10">
+            <motion.div
+                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-10 md:p-16 shadow-2xl relative overflow-hidden"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+            >
+                {/* Floating Icons */}
+                <motion.div 
+                    className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/20 rounded-full blur-3xl"
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
+                    transition={{ duration: 4, repeat: Infinity }}
+                ></motion.div>
+                
+                <div className="flex flex-col md:flex-row items-center gap-12">
+                    <div className="flex-1 text-center md:text-left">
+                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-sm font-semibold mb-6">
+                            <MessageSquare className="w-4 h-4" />
+                            <span>Enterprise-Grade Messaging</span>
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-extrabold mb-6 text-white tracking-tight leading-tight">
+                            What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300">CloudSpace Chat?</span>
+                        </h2>
+                        <p className="text-slate-300 leading-relaxed text-lg mb-8 font-light">
+                            CNT CloudSpace Chat is a secure enterprise messaging platform
+                            designed to streamline internal communication. Built for performance
+                            and flexibility, it offers seamless real-time messaging accessible
+                            directly via your browser or through our dedicated desktop
+                            application.
+                        </p>
+                        <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+                             <div className="flex items-center gap-2 text-slate-400 text-sm">
+                                <div className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.5)]"></div>
+                                Real-time Sync
+                             </div>
+                             <div className="flex items-center gap-2 text-slate-400 text-sm">
+                                <div className="w-2 h-2 rounded-full bg-blue-400 shadow-[0_0_10px_rgba(96,165,250,0.5)]"></div>
+                                End-to-End Encrypted
+                             </div>
+                             <div className="flex items-center gap-2 text-slate-400 text-sm">
+                                <div className="w-2 h-2 rounded-full bg-purple-400 shadow-[0_0_10px_rgba(192,132,252,0.5)]"></div>
+                                Cross-Platform
+                             </div>
+                        </div>
+                    </div>
+
+                    {/* Visual/Icon Composition */}
+                    <div className="flex-shrink-0 relative w-full md:w-1/2 flex justify-center md:justify-end">
+                        <div className="relative w-full max-w-[500px] lg:max-w-[600px]">
+                            {/* Glow Effect behind the image */}
+                            <div className="absolute inset-0 bg-gradient-to-tr from-blue-600 to-cyan-400 rounded-[2rem] blur-[60px] opacity-30"></div>
+                            
+                            {/* Main App Preview Card */}
+                            <motion.div 
+                                className="relative rounded-2xl overflow-hidden border border-white/20 shadow-2xl bg-[#0F172A]"
+                                whileHover={{ scale: 1.02 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                {/* Fake Browser Header */}
+                                <div className="h-8 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                                    <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
+                                </div>
+                                {/* App Screenshot */}
+                                <div className="relative aspect-[16/10]">
+                                    <Image 
+                                        src="/Chat1.png" 
+                                        alt="CloudSpace Chat UI" 
+                                        fill 
+                                        className="object-cover object-top opacity-90 hover:opacity-100 transition-opacity duration-500"
+                                    />
+                                    {/* Gradient Overlay for depth */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-20"></div>
+                                </div>
+                            </motion.div>
+
+                            {/* Orbiting Elements */}
+                             <motion.div 
+                                className="absolute -right-4 lg:-right-12 top-10 p-4 bg-[#1F2943]/90 backdrop-blur-md border border-white/10 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.4)] flex items-center gap-4 z-20"
+                                animate={{ y: [-15, 15, -15] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                            >
+                                <div className="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center">
+                                    <Shield className="w-6 h-6 text-green-400" />
+                                </div>
+                                <div className="text-sm">
+                                    <div className="text-slate-200 font-bold">Secure</div>
+                                    <div className="text-slate-500 text-xs">AES-256</div>
+                                </div>
+                            </motion.div>
+
+                            <motion.div 
+                                className="absolute -left-4 lg:-left-12 bottom-8 p-4 bg-[#1F2943]/90 backdrop-blur-md border border-white/10 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.4)] flex items-center gap-4 z-20"
+                                animate={{ y: [15, -15, 15] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            >
+                                <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                                    <MonitorSmartphone className="w-6 h-6 text-blue-400" />
+                                </div>
+                                <div className="text-sm">
+                                    <div className="text-slate-200 font-bold">Any Device</div>
+                                    <div className="text-slate-500 text-xs">Web & Desktop</div>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </motion.div>
+        </div>
       </section>
 
       {/* Smart Organized Communication */}

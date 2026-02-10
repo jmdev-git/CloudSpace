@@ -1,16 +1,17 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import Autoplay from "embla-carousel-autoplay"
 import {
   Carousel,
   CarouselContent,
-  CarouselNavigation,
-  CarouselIndicator,
   CarouselItem,
-} from '@/components/motion-primitives/carousel';
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel"
 
 const slides = [
   {
@@ -34,17 +35,12 @@ const slides = [
 ];
 
 const About = () => {
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const slideInterval = setInterval(() => {
-      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 5000);
-    return () => clearInterval(slideInterval);
-  }, []);
+  const plugin = React.useRef(
+    Autoplay({ delay: 5000, stopOnInteraction: true })
+  )
 
   return (
-    <section className="py-24 px-6 bg-white border-b border-gray-100 overflow-hidden">
+    <section className="py-24 px-6 bg-[#1F2943] border-b border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -56,19 +52,19 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-8 leading-tight uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-8 leading-tight uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300">
               About CNT CloudSpace
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+            <p className="text-lg text-slate-300 leading-relaxed mb-8">
               CNT CloudSpace is a centralized, secure digital environment designed to streamline your daily operations. 
               From seamless communication and real-time collaboration to efficient file management and instant IT support, 
               we bring everything you need into one intuitive platform.
             </p>
-            <p className="text-lg text-gray-600 leading-relaxed mb-10">
+            <p className="text-lg text-slate-300 leading-relaxed mb-10">
               Experience a smarter way to work, connected and secure.
             </p>
             <motion.button 
-                className="text-blue-600 font-bold hover:text-blue-700 transition-colors flex items-center gap-2 group"
+                className="text-blue-400 font-bold hover:text-blue-300 transition-colors flex items-center gap-2 group"
                 whileHover={{ x: 5 }}
             >
               Learn more about us 
@@ -84,18 +80,19 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
               <Carousel
-                index={current}
-                onIndexChange={setCurrent}
+                plugins={[plugin.current]}
                 className="w-full"
+                onMouseEnter={plugin.current.stop}
+                onMouseLeave={plugin.current.reset}
               >
                 <CarouselContent className="h-[300px] sm:h-[400px]">
                   {slides.map((slide) => (
                     <CarouselItem key={slide.id} className="h-full">
-                      <div className={`w-full h-full ${slide.fallbackColor} flex items-center justify-center relative`}>
+                      <div className={`w-full h-full flex items-center justify-center relative bg-[#1F2943]`}>
                         {/* Fallback Text (visible while loading or if image missing) */}
-                        <span className="text-slate-400 font-medium absolute z-0">{slide.alt}</span>
+                        <span className="text-slate-500 font-medium absolute z-0">{slide.alt}</span>
                         
                         {/* Actual Image */}
                         <Image
@@ -112,8 +109,10 @@ const About = () => {
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <CarouselNavigation alwaysShow />
-                <CarouselIndicator className="pb-6" />
+                <div className="absolute bottom-4 right-14 flex gap-2">
+                    <CarouselPrevious className="static translate-y-0 bg-[#1F2943]/80 border-white/10 text-white hover:bg-blue-600 hover:text-white" />
+                    <CarouselNext className="static translate-y-0 bg-[#1F2943]/80 border-white/10 text-white hover:bg-blue-600 hover:text-white" />
+                </div>
               </Carousel>
             </div>
             
