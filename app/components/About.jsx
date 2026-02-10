@@ -56,7 +56,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2943] mb-8 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-8 leading-tight uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
               About CNT CloudSpace
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
@@ -119,7 +119,7 @@ const About = () => {
             
             {/* Decorative background element */}
             <motion.div 
-                className="absolute -z-10 top-10 -right-10 w-full h-full bg-blue-50/50 rounded-2xl transform rotate-3"
+                className="absolute -z-10 top-10 -right-10 w-full h-full bg-blue-500/5 rounded-2xl transform rotate-3"
                 animate={{ rotate: [3, 5, 3] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             ></motion.div>

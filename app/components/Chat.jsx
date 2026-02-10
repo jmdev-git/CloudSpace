@@ -55,8 +55,38 @@ const Chat = () => {
   };
 
   const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } },
+  };
+
+  // Icon Animation Variants
+  const iconVariants = {
+    hover: {
+      scale: 1.2,
+      rotate: [0, -10, 10, -5, 5, 0],
+      transition: { duration: 0.5 },
+    },
+    pulse: {
+      scale: [1, 1.1, 1],
+      transition: { duration: 2, repeat: Infinity },
+    },
+    shake: {
+      rotate: [0, -15, 15, -15, 15, 0],
+      transition: { duration: 0.5, repeatType: "loop", repeatDelay: 1 },
+    },
+    bounce: {
+      y: [0, -5, 0],
+      transition: { duration: 0.6, repeat: Infinity, repeatType: "reverse" },
+    },
+    slide: {
+      x: [0, 5, 0],
+      transition: { duration: 1, repeat: Infinity },
+    },
+    grow: {
+      scaleY: [1, 1.2, 1],
+      originY: 1,
+      transition: { duration: 1.5, repeat: Infinity },
+    }
   };
 
   return (
@@ -102,20 +132,20 @@ const Chat = () => {
           </motion.p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <motion.button
-              className="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 px-8 rounded-full transition-all shadow-lg flex items-center justify-center gap-3"
+              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-all duration-300 shadow-xl shadow-blue-900/20"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Download className="w-5 h-5" />
-              Download for Windows
+              <span className="font-semibold text-lg tracking-wide">Download for Windows</span>
             </motion.button>
             <motion.button
-              className="bg-white text-[#1F2943] hover:bg-gray-100 font-semibold py-4 px-8 rounded-full transition-all shadow-lg flex items-center justify-center gap-3"
+              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 rounded-full transition-all duration-300 shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Globe className="w-5 h-5" />
-              Open in Browser
+              <span className="font-semibold text-lg tracking-wide">Open in Browser</span>
             </motion.button>
           </div>
         </motion.div>
@@ -129,10 +159,10 @@ const Chat = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold text-[#1F2943] mb-8">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-8 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
             What is CloudSpace Chat?
           </h2>
-          <p className="text-gray-600 leading-relaxed text-lg max-w-4xl mx-auto">
+          <p className="text-slate-300 leading-relaxed text-lg max-w-4xl mx-auto">
             CNT CloudSpace Chat is a secure enterprise messaging platform
             designed to streamline internal communication. Built for performance
             and flexibility, it offers seamless real-time messaging accessible
@@ -143,7 +173,7 @@ const Chat = () => {
       </section>
 
       {/* Smart Organized Communication */}
-      <section className="py-24 px-6 bg-gray-50 border-y border-gray-100 overflow-hidden">
+      <section className="py-24 px-6 bg-[#1F2943] border-y border-white/10 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Text Content */}
@@ -153,20 +183,20 @@ const Chat = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl font-bold text-[#1F2943] mb-12 w-96">
+              <h2 className="text-3xl md:text-5xl font-extrabold mb-12 w-full uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
                 Smart, Organized Communication Made Easy
               </h2>
               <div className="space-y-10">
                 {/* Item 1 */}
                 <div className="flex gap-5">
-                  <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 shrink-0 shadow-sm">
+                  <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 shrink-0 shadow-sm border border-white/5">
                     <Compass className="w-7 h-7" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-[#1F2943] mb-3">
+                    <h3 className="text-xl font-bold text-white mb-3">
                       Manage messages with ease
                     </h3>
-                    <p className="text-gray-600 leading-relaxed text-base">
+                    <p className="text-slate-300 leading-relaxed text-base">
                       Stay on top of your daily conversations with features like
                       message pinning, bookmarks, and hashtags — making
                       communication more structured and accessible.
@@ -175,14 +205,14 @@ const Chat = () => {
                 </div>
                 {/* Item 2 */}
                 <div className="flex gap-5">
-                  <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 shrink-0 shadow-sm">
+                  <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 shrink-0 shadow-sm border border-white/5">
                     <Pin className="w-7 h-7" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-[#1F2943] mb-3">
+                    <h3 className="text-xl font-bold text-white mb-3">
                       Keep everyone in the loop
                     </h3>
-                    <p className="text-gray-600 leading-relaxed text-base">
+                    <p className="text-slate-300 leading-relaxed text-base">
                       Pin key messages or mention team members to highlight
                       important updates, ensuring the right information reaches
                       the right people.
@@ -191,14 +221,14 @@ const Chat = () => {
                 </div>
                 {/* Item 3 */}
                 <div className="flex gap-5">
-                  <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 shrink-0 shadow-sm">
+                  <div className="w-14 h-14 bg-blue-500/10 rounded-2xl flex items-center justify-center text-blue-400 shrink-0 shadow-sm border border-white/5">
                     <Search className="w-7 h-7" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-[#1F2943] mb-3">
+                    <h3 className="text-xl font-bold text-white mb-3">
                       Find what matters, faster
                     </h3>
-                    <p className="text-gray-600 leading-relaxed text-base">
+                    <p className="text-slate-300 leading-relaxed text-base">
                       Quickly retrieve important messages using bookmarks and
                       tags — or use the powerful built-in search to locate
                       shared files, links, and conversations in seconds.
@@ -261,10 +291,17 @@ const Chat = () => {
       </section>
 
       {/* Transform team communication */}
-      <section className="py-24 px-6 bg-[#111827] text-white">
-        <div className="max-w-7xl mx-auto">
+      <section className="py-24 px-6 bg-[#1F2943] text-white relative overflow-hidden">
+        {/* Modern Background Gradient & Blobs */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            <div className="absolute top-[-20%] left-[20%] w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[100px]" />
+            <div className="absolute bottom-[-20%] right-[20%] w-[600px] h-[600px] bg-cyan-900/20 rounded-full blur-[100px]" />
+            <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-[0.05]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.h2
-            className="text-3xl font-bold text-center mb-16"
+            className="text-3xl md:text-5xl font-extrabold text-center mb-20 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 drop-shadow-sm"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -272,25 +309,32 @@ const Chat = () => {
             Transform team communication
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {/* Feature 1 */}
             <motion.div
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, y: 20 }}
+              className="flex flex-col items-center group"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <div className="mb-6">
-                <div className="relative">
-                  <Shield className="w-12 h-12 text-white" strokeWidth={1.5} />
-                  <div className="absolute inset-0 flex items-center justify-center pt-1">
-                    <User className="w-5 h-5 text-white" strokeWidth={2} />
-                  </div>
-                </div>
+              <div className="relative mb-8 p-6 bg-white/5 backdrop-blur-md rounded-full border border-white/10 group-hover:bg-white/10 group-hover:border-blue-500/50 group-hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] transition-all duration-500">
+                <motion.div
+                    className="relative"
+                    whileHover={{ scale: 1.1 }}
+                >
+                  <Shield className="w-16 h-16 text-blue-400 group-hover:text-cyan-300 transition-colors duration-300" strokeWidth={1.5} />
+                  <motion.div 
+                    className="absolute inset-0 flex items-center justify-center pt-1"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    <User className="w-6 h-6 text-white group-hover:text-blue-100 transition-colors duration-300" strokeWidth={2} />
+                  </motion.div>
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold mb-4">Maximum flexibility</h3>
-              <p className="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto">
+              <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-blue-300 transition-colors">Maximum flexibility</h3>
+              <p className="text-slate-400 text-base leading-relaxed max-w-xs mx-auto font-light group-hover:text-slate-300 transition-colors">
                 Start conversations between one or more people or create public
                 or private channels.
               </p>
@@ -298,25 +342,32 @@ const Chat = () => {
 
             {/* Feature 2 */}
             <motion.div
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, y: 20 }}
+              className="flex flex-col items-center group"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
             >
-              <div className="mb-6">
-                <div className="relative">
+              <div className="relative mb-8 p-6 bg-white/5 backdrop-blur-md rounded-full border border-white/10 group-hover:bg-white/10 group-hover:border-blue-500/50 group-hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] transition-all duration-500">
+                <motion.div
+                    className="relative"
+                    whileHover={{ scale: 1.1 }}
+                >
                   <MessageSquare
-                    className="w-12 h-12 text-white"
+                    className="w-16 h-16 text-blue-400 group-hover:text-cyan-300 transition-colors duration-300"
                     strokeWidth={1.5}
                   />
-                  <div className="absolute -bottom-1 -right-1 bg-[#111827] rounded-full p-0.5">
-                    <Lock className="w-5 h-5 text-white" strokeWidth={2} />
-                  </div>
-                </div>
+                  <motion.div 
+                    className="absolute -bottom-1 -right-1 bg-[#0B1120] rounded-full p-1 border border-white/10"
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 1 }}
+                  >
+                    <Lock className="w-6 h-6 text-white group-hover:text-blue-100 transition-colors duration-300" strokeWidth={2} />
+                  </motion.div>
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold mb-4">Complete privacy</h3>
-              <p className="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto">
+              <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-blue-300 transition-colors">Complete privacy</h3>
+              <p className="text-slate-400 text-base leading-relaxed max-w-xs mx-auto font-light group-hover:text-slate-300 transition-colors">
                 Ensure confidentiality with optional end-to-end encryption for
                 conversations or channels.
               </p>
@@ -324,20 +375,27 @@ const Chat = () => {
 
             {/* Feature 3 */}
             <motion.div
-              className="flex flex-col items-center"
-              initial={{ opacity: 0, y: 20 }}
+              className="flex flex-col items-center group"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              <div className="mb-6 flex items-end justify-center gap-1">
-                <MonitorSmartphone
-                  className="w-12 h-12 text-white"
-                  strokeWidth={1.5}
-                />
+              <div className="relative mb-8 p-6 bg-white/5 backdrop-blur-md rounded-full border border-white/10 group-hover:bg-white/10 group-hover:border-blue-500/50 group-hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] transition-all duration-500">
+                <motion.div
+                    className="flex items-end justify-center gap-1"
+                    whileHover={{ scale: 1.1 }}
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <MonitorSmartphone
+                    className="w-16 h-16 text-blue-400 group-hover:text-cyan-300 transition-colors duration-300"
+                    strokeWidth={1.5}
+                  />
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold mb-4">Multi-platform access</h3>
-              <p className="text-gray-400 text-sm leading-relaxed max-w-xs mx-auto">
+              <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-blue-300 transition-colors">Multi-platform access</h3>
+              <p className="text-slate-400 text-base leading-relaxed max-w-xs mx-auto font-light group-hover:text-slate-300 transition-colors">
                 Chat from the browser, Windows, macOS, Linux, iOS, or Android
                 platforms.
               </p>
@@ -346,9 +404,13 @@ const Chat = () => {
         </div>
       </section>
 
-      {/* Empower Remote Teams Section (Replaced) */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-7xl mx-auto">
+      {/* Empower Remote Teams Section (Refactored) */}
+      <section className="py-24 px-6 bg-[#1F2943] relative overflow-hidden">
+        {/* Decorative background blobs */}
+        <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             className="text-center mb-20"
             initial={{ opacity: 0, y: 20 }}
@@ -356,10 +418,10 @@ const Chat = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-[#1F2943] mb-6">
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-6 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 drop-shadow-sm">
               Empower remote teams
             </h2>
-            <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-blue-100 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">
               Chat is embedded with interactive and entertaining features to
               increase users' productivity.
             </p>
@@ -367,7 +429,7 @@ const Chat = () => {
 
           {/* Feature Grid */}
           <motion.div
-            className="flex flex-wrap justify-center gap-x-12 gap-y-16"
+            className="flex flex-wrap justify-center gap-8"
             variants={container}
             initial="hidden"
             whileInView="show"
@@ -376,13 +438,19 @@ const Chat = () => {
             {/* Threads */}
             <motion.div
               variants={item}
-              className="flex flex-col items-center text-center max-w-[300px] group"
+              className="flex flex-col items-center text-center w-full sm:w-[300px] group"
             >
-              <div className="mb-6 p-4 bg-gray-50 rounded-2xl group-hover:bg-blue-50 transition-colors duration-300">
-                <MessageSquare className="w-10 h-10 text-gray-700 group-hover:text-blue-600 transition-colors" />
+              <div className="relative mb-6 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 group-hover:bg-white/10 group-hover:border-blue-500/30 group-hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)] transition-all duration-300">
+                <motion.div
+                  variants={iconVariants}
+                  whileHover="hover"
+                  animate="bounce"
+                >
+                  <MessageSquare className="w-12 h-12 text-blue-400 group-hover:text-cyan-300 transition-colors" />
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold text-[#1F2943] mb-3">Threads</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">Threads</h3>
+              <p className="text-slate-300 leading-relaxed text-sm font-light">
                 Keep conversations tidy by replying to messages in a thread.
               </p>
             </motion.div>
@@ -390,15 +458,21 @@ const Chat = () => {
             {/* Reminders */}
             <motion.div
               variants={item}
-              className="flex flex-col items-center text-center max-w-[300px] group"
+              className="flex flex-col items-center text-center w-full sm:w-[300px] group"
             >
-              <div className="mb-6 p-4 bg-gray-50 rounded-2xl group-hover:bg-blue-50 transition-colors duration-300">
-                <Bell className="w-10 h-10 text-gray-700 group-hover:text-blue-600 transition-colors" />
+              <div className="relative mb-6 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 group-hover:bg-white/10 group-hover:border-blue-500/30 group-hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)] transition-all duration-300">
+                <motion.div
+                  variants={iconVariants}
+                  whileHover="hover"
+                  animate="shake"
+                >
+                  <Bell className="w-12 h-12 text-blue-400 group-hover:text-cyan-300 transition-colors" />
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold text-[#1F2943] mb-3">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
                 Reminders
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-slate-300 leading-relaxed text-sm font-light">
                 Stay on top of what matters with message reminders.
               </p>
             </motion.div>
@@ -406,13 +480,19 @@ const Chat = () => {
             {/* Polls */}
             <motion.div
               variants={item}
-              className="flex flex-col items-center text-center max-w-[300px] group"
+              className="flex flex-col items-center text-center w-full sm:w-[300px] group"
             >
-              <div className="mb-6 p-4 bg-gray-50 rounded-2xl group-hover:bg-blue-50 transition-colors duration-300">
-                <BarChart3 className="w-10 h-10 text-gray-700 group-hover:text-blue-600 transition-colors" />
+              <div className="relative mb-6 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 group-hover:bg-white/10 group-hover:border-blue-500/30 group-hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)] transition-all duration-300">
+                <motion.div
+                  variants={iconVariants}
+                  whileHover="hover"
+                  animate="grow"
+                >
+                  <BarChart3 className="w-12 h-12 text-blue-400 group-hover:text-cyan-300 transition-colors" />
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold text-[#1F2943] mb-3">Polls</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">Polls</h3>
+              <p className="text-slate-300 leading-relaxed text-sm font-light">
                 Get feedback from your team by creating polls.
               </p>
             </motion.div>
@@ -420,15 +500,21 @@ const Chat = () => {
             {/* Forwarding */}
             <motion.div
               variants={item}
-              className="flex flex-col items-center text-center max-w-[300px] group"
+              className="flex flex-col items-center text-center w-full sm:w-[300px] group"
             >
-              <div className="mb-6 p-4 bg-gray-50 rounded-2xl group-hover:bg-blue-50 transition-colors duration-300">
-                <Forward className="w-10 h-10 text-gray-700 group-hover:text-blue-600 transition-colors" />
+              <div className="relative mb-6 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 group-hover:bg-white/10 group-hover:border-blue-500/30 group-hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)] transition-all duration-300">
+                <motion.div
+                  variants={iconVariants}
+                  whileHover="hover"
+                  animate="slide"
+                >
+                  <Forward className="w-12 h-12 text-blue-400 group-hover:text-cyan-300 transition-colors" />
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold text-[#1F2943] mb-3">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
                 Forwarding
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-slate-300 leading-relaxed text-sm font-light">
                 Save time by forwarding messages and large files.
               </p>
             </motion.div>
@@ -436,15 +522,21 @@ const Chat = () => {
             {/* Scheduling */}
             <motion.div
               variants={item}
-              className="flex flex-col items-center text-center max-w-[300px] group"
+              className="flex flex-col items-center text-center w-full sm:w-[300px] group"
             >
-              <div className="mb-6 p-4 bg-gray-50 rounded-2xl group-hover:bg-blue-50 transition-colors duration-300">
-                <CalendarClock className="w-10 h-10 text-gray-700 group-hover:text-blue-600 transition-colors" />
+              <div className="relative mb-6 p-6 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 group-hover:bg-white/10 group-hover:border-blue-500/30 group-hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.3)] transition-all duration-300">
+                <motion.div
+                  variants={iconVariants}
+                  whileHover="hover"
+                  animate="pulse"
+                >
+                  <CalendarClock className="w-12 h-12 text-blue-400 group-hover:text-cyan-300 transition-colors" />
+                </motion.div>
               </div>
-              <h3 className="text-xl font-bold text-[#1F2943] mb-3">
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors">
                 Scheduling
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-slate-300 leading-relaxed text-sm font-light">
                 Plan your work ahead by scheduling messages in advance.
               </p>
             </motion.div>
@@ -453,25 +545,51 @@ const Chat = () => {
       </section>
 
       {/* Closing Section */}
-      <section className="py-24 px-6 bg-slate-900 text-white text-center">
+      <section className="relative py-32 px-6 overflow-hidden bg-[#1F2943]">
+        {/* Background Gradients */}
+        <div className="absolute inset-0 w-full h-full">
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] animate-pulse"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[100px] animate-pulse delay-1000"></div>
+        </div>
+
+        {/* Grid Pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]"></div>
+
         <motion.div
-          className="max-w-3xl mx-auto"
+          className="relative max-w-4xl mx-auto text-center z-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">
-            Ready to Transform Your Communication?
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="inline-block mb-6 px-4 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 backdrop-blur-sm"
+          >
+            <span className="text-blue-300 text-sm font-semibold tracking-wide uppercase">Join the Revolution</span>
+          </motion.div>
+
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-8 tracking-tight text-white leading-tight">
+            Ready to Transform Your <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+              Communication?
+            </span>
           </h2>
-          <p className="text-xl text-gray-300 mb-10 font-light">
-            Join thousands of employees communicating faster and more securely.
+          
+          <p className="text-xl md:text-2xl text-slate-300 mb-12 font-light max-w-2xl mx-auto leading-relaxed">
+            Join thousands of employees communicating faster, safer, and more securely than ever before.
           </p>
+          
           <motion.button
-            className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-12 rounded-full transition-all shadow-lg hover:shadow-blue-500/50"
+            className="group relative inline-flex items-center justify-center px-12 py-5 text-lg font-bold text-white transition-all duration-200 bg-blue-600 font-pj rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600 shadow-xl shadow-blue-900/20"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Get Started Today
+            <span className="relative">Get Started Today</span>
+            <div className="absolute inset-0 rounded-full ring-2 ring-white/20 group-hover:ring-white/40 transition-all"></div>
+            <svg className="w-5 h-5 ml-2 -mr-1 transition-all duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
           </motion.button>
         </motion.div>
       </section>

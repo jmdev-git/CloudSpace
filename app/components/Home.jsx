@@ -6,7 +6,7 @@ import Contact from './Contact';
 
 const HomeSection = () => {
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-800">
+    <div className="min-h-screen bg-[#1F2943] font-sans text-slate-200">
       <Hero />
       <About />
       <Features />

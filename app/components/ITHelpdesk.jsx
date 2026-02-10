@@ -57,11 +57,17 @@ const ITHelpdesk = () => {
             We make IT work, so you can focus on what really matters.
           </motion.p>
           <motion.button
-            className="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-4 px-10 rounded-full transition-all shadow-lg hover:shadow-blue-500/30"
+            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-all duration-300 shadow-xl shadow-blue-900/20"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Submit a Ticket
+            <span className="font-semibold text-lg tracking-wide">Submit a Ticket</span>
+            <motion.div
+                animate={{ rotate: [0, 15, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+                <Activity className="w-6 h-6" />
+            </motion.div>
           </motion.button>
         </motion.div>
       </section>
@@ -75,7 +81,7 @@ const ITHelpdesk = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl font-bold text-[#1F2943] mb-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
             Streamlined Support
           </h2>
           <p className="text-gray-600 mb-10 leading-relaxed text-lg">
@@ -84,7 +90,7 @@ const ITHelpdesk = () => {
             resolved efficiently to minimize downtime.
           </p>
 
-          <h3 className="text-lg font-bold text-[#1F2943] mb-6 uppercase tracking-wider text-sm">
+          <h3 className="text-lg font-extrabold mb-6 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500 text-sm">
             Key Capabilities
           </h3>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -139,13 +145,13 @@ const ITHelpdesk = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* When to Use */}
           <motion.div
-            className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100"
+            className="bg-white/5 backdrop-blur-md p-10 rounded-2xl shadow-xl border border-white/10"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl font-bold text-[#1F2943] mb-8">
+          <h2 className="text-2xl md:text-3xl font-extrabold mb-8 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
               Support Categories
             </h2>
             <motion.ul
@@ -180,13 +186,13 @@ const ITHelpdesk = () => {
 
           {/* How to Access */}
           <motion.div
-            className="bg-white p-10 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-center"
+            className="bg-white/5 backdrop-blur-md p-10 rounded-2xl shadow-xl border border-white/10 flex flex-col justify-center"
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl font-bold text-[#1F2943] mb-8">
+            <h2 className="text-3xl md:text-5xl font-extrabold mb-8 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
               Access the Portal
             </h2>
             <div className="space-y-6">
@@ -194,16 +200,16 @@ const ITHelpdesk = () => {
                 className="flex items-start gap-4 group cursor-pointer"
                 whileHover={{ x: 5 }}
               >
-                <div className="bg-blue-50 p-4 rounded-xl text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <div className="bg-blue-500/10 p-4 rounded-xl text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                   <ExternalLink className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
+                  <h3 className="font-bold text-white mb-1 group-hover:text-blue-400 transition-colors">
                     Helpdesk Portal
                   </h3>
                   <a
                     href="#"
-                    className="text-gray-500 hover:text-blue-600 transition-colors text-sm"
+                    className="text-slate-400 hover:text-blue-400 transition-colors text-sm"
                   >
                     Click to launch the full support dashboard
                   </a>

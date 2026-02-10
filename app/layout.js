@@ -2,6 +2,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         {children}
+        <ScrollToTop />
         <Footer />
       </body>
     </html>

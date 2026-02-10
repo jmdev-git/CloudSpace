@@ -36,22 +36,24 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link href="/" className="inline-block">
-              <span className="text-2xl font-bold tracking-tight">CNT CloudSpace</span>
+              <span className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300">
+                CNT CloudSpace
+              </span>
             </Link>
             <p className="text-gray-300 text-sm leading-relaxed max-w-xs">
               Your secure, all-in-one digital workspace. Streamline communication and support with enterprise-grade reliability.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-blue-500/25">
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-blue-500/25">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-blue-500/25">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-blue-600 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-gradient-to-r hover:from-blue-500 hover:to-cyan-400 hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-blue-500/25">
                 <Instagram className="w-5 h-5" />
               </a>
             </div>
@@ -59,7 +61,9 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Product</h3>
+            <h3 className="font-bold text-lg mb-6 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+              Product
+            </h3>
             <ul className="space-y-4">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
@@ -74,7 +78,9 @@ const Footer = () => {
 
           {/* Company */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Company</h3>
+            <h3 className="font-bold text-lg mb-6 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+              Company
+            </h3>
             <ul className="space-y-4">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
@@ -89,7 +95,9 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-semibold text-lg mb-6">Stay Connected</h3>
+            <h3 className="font-bold text-lg mb-6 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+              Stay Connected
+            </h3>
             <ul className="space-y-4 text-sm text-gray-300">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-blue-400 shrink-0 mt-0.5" />
