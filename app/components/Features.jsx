@@ -58,7 +58,7 @@ const Features = () => {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.h2 
-            className="text-3xl md:text-5xl font-extrabold text-center mb-20 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
+            className="text-3xl md:text-5xl font-extrabold text-center mb-20 uppercase tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

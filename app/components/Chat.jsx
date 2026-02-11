@@ -1,6 +1,5 @@
 "use client";
-
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Image from "next/image";
 import {
   Download,
@@ -22,29 +21,25 @@ import {
   Compass,
 } from "lucide-react";
 import { motion } from "motion/react";
+import Autoplay from "embla-carousel-autoplay"
 import {
   Carousel,
   CarouselContent,
-  CarouselNavigation,
-  CarouselIndicator,
   CarouselItem,
-} from "@/components/motion-primitives/carousel";
+  CarouselPrevious,
+  CarouselNext,
+} from "./ui/carousel";
 
 const Chat = () => {
-  const [current, setCurrent] = useState(0);
+  const plugin = React.useRef(
+    Autoplay({ delay: 1000, stopOnInteraction: true })
+  )
 
   const chatSlides = [
     { id: 1, src: "/Chat1.png", alt: "Chat Dashboard" },
     { id: 2, src: "/Chat2.png", alt: "Threaded Conversations" },
     { id: 3, src: "/Chat3.png", alt: "Search Functionality" },
   ];
-
-  useEffect(() => {
-    const slideInterval = setInterval(() => {
-      setCurrent((prev) => (prev === chatSlides.length - 1 ? 0 : prev + 1));
-    }, 5000);
-    return () => clearInterval(slideInterval);
-  }, []);
 
   const container = {
     hidden: { opacity: 0 },
@@ -132,7 +127,7 @@ const Chat = () => {
           </motion.p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <motion.button
-              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-all duration-300 shadow-xl shadow-blue-900/20"
+              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-all duration-300 shadow-xl shadow-blue-900/20"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -281,7 +276,7 @@ const Chat = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-5xl font-extrabold mb-12 w-full uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">
+              <h2 className="text-3xl md:text-5xl font-extrabold text-left max-w-xl mb-8 uppercase tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
                 Smart, Organized Communication Made Easy
               </h2>
               <div className="space-y-10">
@@ -344,38 +339,46 @@ const Chat = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
+              <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-[#0F172A]/80 backdrop-blur-xl">
+                {/* Window Header */}
+                <div className="h-10 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                    <div className="ml-4 text-xs text-slate-400 font-medium tracking-wide">CNT Chat - Workspace</div>
+                </div>
+                
                 <Carousel
-                  index={current}
-                  onIndexChange={setCurrent}
+                  plugins={[plugin.current]}
                   className="w-full"
+                  onMouseEnter={plugin.current.stop}
+                  onMouseLeave={plugin.current.reset}
                 >
                   <CarouselContent className="h-[350px] sm:h-[450px]">
                     {chatSlides.map((slide) => (
-                      <CarouselItem key={slide.id} className="h-full pl-0">
+                      <CarouselItem key={slide.id} className="h-full">
                         <div className="w-full h-full relative">
                           <Image
                             src={slide.src}
                             alt={slide.alt}
                             fill
-                            className="object-cover"
+                            className="object-contain"
                             priority={slide.id === 1}
                           />
+                          {/* Gradient Overlay for better text readability if images are light, but good for mood */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/40 via-transparent to-transparent pointer-events-none"></div>
                         </div>
                       </CarouselItem>
                     ))}
                   </CarouselContent>
-                  <CarouselNavigation
-                    alwaysShow
-                    className="bg-white/80 backdrop-blur-sm"
-                  />
-                  <CarouselIndicator className="pb-6" />
+                  <CarouselPrevious className="left-4 bg-[#1F2943]/80 border-white/10 text-white hover:bg-blue-600 hover:text-white z-20" />
+                  <CarouselNext className="right-4 bg-[#1F2943]/80 border-white/10 text-white hover:bg-blue-600 hover:text-white z-20" />
                 </Carousel>
               </div>
 
               {/* Decorative background element */}
               <motion.div
-                className="absolute -z-10 top-8 -right-8 w-full h-full bg-blue-100/50 rounded-3xl"
+                className="absolute -z-10 top-8 -right-8 w-full h-full bg-blue-500/10 rounded-3xl blur-2xl"
                 animate={{ rotate: [2, 4, 2] }}
                 transition={{
                   duration: 8,
@@ -399,7 +402,7 @@ const Chat = () => {
 
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.h2
-            className="text-3xl md:text-5xl font-extrabold text-center mb-20 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 drop-shadow-sm"
+            className="text-3xl md:text-5xl font-extrabold text-center mb-20 uppercase tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -516,7 +519,7 @@ const Chat = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-6 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-400 drop-shadow-sm">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-6 uppercase tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
               Empower remote teams
             </h2>
             <p className="text-blue-100 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed font-light">

@@ -36,10 +36,10 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
         >
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-6 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300 drop-shadow-lg">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-6 uppercase tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
                 Need Assistance?
             </h2>
-            <p className="text-blue-100/80 text-lg max-w-2xl mx-auto leading-relaxed">
+            <p className="text-blue-100/80 text-lg max-w-lg mx-auto leading-relaxed">
                 Our support team is always ready to help. Choose the most convenient way to reach us.
             </p>
         </motion.div>

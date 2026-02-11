@@ -36,11 +36,11 @@ const slides = [
 
 const About = () => {
   const plugin = React.useRef(
-    Autoplay({ delay: 5000, stopOnInteraction: true })
+    Autoplay({ delay: 1000, stopOnInteraction: true })
   )
 
   return (
-    <section className="py-24 px-6 bg-[#1F2943] border-b border-white/10 overflow-hidden">
+    <section className="py-24 px-6 bg-[#1F2943] overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
@@ -52,7 +52,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-8 leading-tight uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-8 uppercase tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
               About CNT CloudSpace
             </h2>
             <p className="text-lg text-slate-300 leading-relaxed mb-8">
@@ -80,7 +80,15 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-[#0F172A]/80 backdrop-blur-xl">
+              {/* Window Header */}
+              <div className="h-10 bg-white/5 border-b border-white/10 flex items-center px-4 gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                  <div className="ml-4 text-xs text-slate-400 font-medium tracking-wide">CNT CloudSpace - Overview</div>
+              </div>
+
               <Carousel
                 plugins={[plugin.current]}
                 className="w-full"
@@ -90,7 +98,7 @@ const About = () => {
                 <CarouselContent className="h-[300px] sm:h-[400px]">
                   {slides.map((slide) => (
                     <CarouselItem key={slide.id} className="h-full">
-                      <div className={`w-full h-full flex items-center justify-center relative bg-[#1F2943]`}>
+                      <div className={`w-full h-full flex items-center justify-center relative bg-[#1F2943]/50`}>
                         {/* Fallback Text (visible while loading or if image missing) */}
                         <span className="text-slate-500 font-medium absolute z-0">{slide.alt}</span>
                         
@@ -99,26 +107,26 @@ const About = () => {
                           src={slide.src}
                           alt={slide.alt}
                           fill
-                          className="object-cover z-10"
+                          className="object-contain z-10"
                           priority={slide.id === 1}
                           onError={(e) => {
                             e.currentTarget.style.display = 'none'; // Hide if image fails to load
                           }}
                         />
+                        {/* Gradient Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/40 via-transparent to-transparent pointer-events-none z-20"></div>
                       </div>
                     </CarouselItem>
                   ))}
                 </CarouselContent>
-                <div className="absolute bottom-4 right-14 flex gap-2">
-                    <CarouselPrevious className="static translate-y-0 bg-[#1F2943]/80 border-white/10 text-white hover:bg-blue-600 hover:text-white" />
-                    <CarouselNext className="static translate-y-0 bg-[#1F2943]/80 border-white/10 text-white hover:bg-blue-600 hover:text-white" />
-                </div>
+                <CarouselPrevious className="left-4 bg-[#1F2943]/80 border-white/10 text-white hover:bg-blue-600 hover:text-white z-20" />
+                <CarouselNext className="right-4 bg-[#1F2943]/80 border-white/10 text-white hover:bg-blue-600 hover:text-white z-20" />
               </Carousel>
             </div>
             
             {/* Decorative background element */}
             <motion.div 
-                className="absolute -z-10 top-10 -right-10 w-full h-full bg-blue-500/5 rounded-2xl transform rotate-3"
+                className="absolute -z-10 top-10 -right-10 w-full h-full bg-blue-500/10 rounded-2xl transform rotate-3 blur-2xl"
                 animate={{ rotate: [3, 5, 3] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             ></motion.div>

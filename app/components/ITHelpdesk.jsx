@@ -43,13 +43,13 @@ const ITHelpdesk = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-5xl md:text-8xl font-extrabold mb-8 tracking-tight leading-tight drop-shadow-2xl"
+            className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tight leading-tight drop-shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             Welcome to the <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300 drop-shadow-sm">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300 drop-shadow-none">
               CNT IT Helpdesk
             </span>
           </motion.h1>
@@ -63,7 +63,7 @@ const ITHelpdesk = () => {
             <span className="text-cyan-300 font-normal">Efficient. Reliable. Secure.</span>
           </motion.p>
           <motion.button
-            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white rounded-full transition-all duration-300 shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)] border border-blue-400/20"
+            className="group relative inline-flex items-center gap-3 px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-all duration-300 shadow-xl shadow-blue-900/20"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -91,7 +91,7 @@ const ITHelpdesk = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-4xl md:text-6xl font-extrabold mb-8 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300">
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-8 uppercase tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
                         Streamlined Support
                     </h2>
                     <p className="text-lg text-slate-300 leading-relaxed mb-8 border-l-4 border-blue-500/50 pl-6">
@@ -190,7 +190,7 @@ const ITHelpdesk = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
-            <h2 className="text-2xl md:text-3xl font-extrabold mb-8 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300 relative z-10">
+            <h2 className="text-xl md:text-4xl font-extrabold mb-8 uppercase tracking-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
               Support Categories
             </h2>
             <motion.ul
@@ -234,7 +234,7 @@ const ITHelpdesk = () => {
              {/* Glow effect */}
              <div className="absolute -right-20 -top-20 w-64 h-64 bg-blue-500/20 rounded-full blur-[80px]"></div>
 
-            <h2 className="text-3xl md:text-5xl font-extrabold mb-8 uppercase tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300 relative z-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold mb-8 uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-300 relative z-10">
               Access the Portal
             </h2>
             <div className="space-y-6 relative z-10">

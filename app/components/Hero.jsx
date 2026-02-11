@@ -6,7 +6,7 @@ import { motion } from 'motion/react';
 
 const Hero = () => {
   return (
-    <section className="relative text-white py-32 px-6 text-center overflow-hidden min-h-[80vh] flex items-center justify-center">
+    <section className="relative text-white py-32 px-6 text-center overflow-hidden min-h-[95vh] flex items-center justify-center">
         {/* Background GIF with Overlay */}
         <div className="absolute inset-0 z-0">
             <img 
@@ -46,7 +46,7 @@ const Hero = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
             >
                 <motion.button 
-                    className="group relative inline-flex items-center gap-3 px-10 py-5 bg-blue-600 hover:bg-blue-500 text-white rounded-full transition-all duration-300 shadow-xl shadow-blue-900/20"
+                    className="group relative inline-flex items-center gap-3 px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition-all duration-300 shadow-xl shadow-blue-900/20"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
